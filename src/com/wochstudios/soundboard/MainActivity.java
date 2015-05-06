@@ -37,13 +37,7 @@ public class MainActivity extends Activity {
 		lv.setAdapter(new ArrayAdapter<String>(this,R.layout.list_item,Titles));
 		registerForContextMenu(lv);
 		lv.setTextFilterEnabled(true);
-		  lv.setOnItemClickListener(new OnItemClickListener() {
-			    public void onItemClick(AdapterView<?> parent, View view,
-			        int position, long id) {
-			    	Log.d("ListItem:OnClick", Titles.get(position));	
-			    	MC.playSound(Titles.get(position));
-			    } 
-			  });	  
+		  lv.setOnItemClickListener(new ListViewClickListener());	  
 	}//onCreate
 	
 	
@@ -75,4 +69,11 @@ public class MainActivity extends Activity {
 		return true;
 	}// onCreateOptionsMenu
 
+}
+
+private class  ListViewClickListener implements OnItemClickListener {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		Log.d("ListItem:OnClick", Titles.get(position));	
+		MC.playSound(Titles.get(position));
+	} 
 }
