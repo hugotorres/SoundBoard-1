@@ -29,16 +29,19 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		init();	  
+	}//onCreate
+	
+	public void init(){
 		MC = new MainController(this);
-		Titles = new ArrayList<String>(MC.getMapKeys());
-		Collections.sort(Titles);
 		//creates and sets the click listener for list view
 		final ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.setAdapter(new ArrayAdapter<String>(this,R.layout.list_item,Titles));
+		lv.setAdapter(new ArrayAdapter<String>(this,R.layout.list_item,
+				Collections.sort(new ArrayList<String>(MC.getMapKeys()))));
 		registerForContextMenu(lv);
 		lv.setTextFilterEnabled(true);
-		  lv.setOnItemClickListener(new ListViewClickListener());	  
-	}//onCreate
+		lv.setOnItemClickListener(new ListViewClickListener());
+	}
 	
 	
 	 @Override
