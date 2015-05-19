@@ -28,7 +28,7 @@ public class FileWriter {
 	}
 	
 	private byte[] getBuffeFromInputStream(InputStream stream){
-		byte[] buffer = new byte[ins.available()];
+		byte[] buffer = new byte[stream.available()];
 		ins.read(buffer);
 		ins.close();
 		return buffer
