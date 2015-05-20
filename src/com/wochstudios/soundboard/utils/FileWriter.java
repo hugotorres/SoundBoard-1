@@ -21,17 +21,17 @@ public class FileWriter {
 		    
 	}
 	
-	private void copyInputStreamToOutputStream(InputStream stream, String file){
+	private void copyInputStreamToOutputStream(InputStream stream, String file) throws IOException{
 		FileOutputStream fos = new FileOutputStream(file);
 		fos.write(getBuffeFromInputStream(stream));
 		fos.close();
 	}
 	
-	private byte[] getBuffeFromInputStream(InputStream stream){
+	private byte[] getBuffeFromInputStream(InputStream stream) throws IOException{
 		byte[] buffer = new byte[stream.available()];
 		stream.read(buffer);
 		stream.close();
-		return buffer
+		return buffer;
 	}
 	
 }

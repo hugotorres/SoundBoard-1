@@ -18,7 +18,7 @@ public class MapLoader {
         	return valueMap;
 	}
 	
-	private void readBufferIntoMap(BufferedReader bfr){
+	private void readBufferIntoMap(BufferedReader bfr) throws IOException{
 		String line = "";
         	while ((line = bfr.readLine()) != null) {
             		if (!line.equals("")){
@@ -26,6 +26,5 @@ public class MapLoader {
                 		valueMap.put(pair[KEY].trim(), pair[VALUE].trim());
             		}
         	}
-        	return valeuMap;
 	}
 }

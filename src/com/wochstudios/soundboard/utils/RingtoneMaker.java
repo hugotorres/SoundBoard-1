@@ -15,12 +15,12 @@ public class RingtoneMaker {
 	
 	public void setRingtone(String name, Context con){
 		File k = new File(Environment.getExternalStorageDirectory().toString()+File.separator+"download"+File.separator+name+".mp3");
-		putValuesFromFile(k);
+		putValuesFromFile(k, name);
 		Uri uri = MediaStore.Audio.Media.getContentUriForPath(k.getAbsolutePath());
 		con.getContentResolver().insert(uri, values);
 	}
 	
-	private void putValuesFromFile(File k){
+	private void putValuesFromFile(File k, String name){
 		values.put(MediaStore.MediaColumns.DATA, k.getAbsolutePath());
 		values.put(MediaStore.MediaColumns.TITLE, name);
 		values.put(MediaStore.MediaColumns.SIZE, k.length());

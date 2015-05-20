@@ -36,8 +36,7 @@ public class MainActivity extends Activity {
 		MC = new MainController(this);
 		//creates and sets the click listener for list view
 		final ListView lv = (ListView) findViewById(R.id.listView1);
-		lv.setAdapter(new ArrayAdapter<String>(this,R.layout.list_item,
-				Collections.sort(new ArrayList<String>(MC.getMapKeys()))));
+		lv.setAdapter(new ArrayAdapter<String>(this,R.layout.list_item,));
 		registerForContextMenu(lv);
 		lv.setTextFilterEnabled(true);
 		lv.setOnItemClickListener(new ListViewClickListener());
@@ -72,11 +71,11 @@ public class MainActivity extends Activity {
 		return true;
 	}// onCreateOptionsMenu
 
-}
+
 
 private class  ListViewClickListener implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Log.d("ListItem:OnClick", Titles.get(position));	
 		MC.playSound(Titles.get(position));
 	} 
-}
+}}
