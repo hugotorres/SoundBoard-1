@@ -12,11 +12,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.wochstudios.soundboard.Adapters.SoundAdapter;
 import com.wochstudios.soundboard.Controllers.SoundboardController;
 import com.wochstudios.soundboard.Interfaces.ISoundboardFragmentListener;
 import com.wochstudios.soundboard.MainActivity;
@@ -36,6 +35,7 @@ public class SoundboardFragment extends Fragment
 	private Soundboard soundboard;
 	private ISoundboardFragmentListener listener;
 	private ActionMode actionMode;
+    private SoundAdapter soundAdapter;
 	
 	public SoundboardFragment(){}
 	public SoundboardFragment(Soundboard s){
@@ -71,7 +71,9 @@ public class SoundboardFragment extends Fragment
 	
 	private void setupListView(View view){
 		soundListView = (ListView) view;
-		soundListView.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.list_item, R.id.listItemTxt, Titles));
+		//soundListView.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.list_item, R.id.listItemTxt, Titles));
+        soundAdapter = new SoundAdapter(getActivity(),soundboard.getSounds());
+        soundListView.setAdapter(soundAdapter);
 		soundListView.setTextFilterEnabled(true);
 		soundListView.setLongClickable(true);
 		soundListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -107,20 +109,17 @@ public class SoundboardFragment extends Fragment
 	{
 		this.soundboard =s;
 		SBC.setSoundboard(soundboard);
-		Titles = soundboard.getTitlesOfSounds();
-		Collections.sort(Titles);
-		((ArrayAdapter<String>)soundListView.getAdapter()).clear();
-		((ArrayAdapter<String>)soundListView.getAdapter()).addAll(Titles);
-		((ArrayAdapter<String>)soundListView.getAdapter()).notifyDataSetChanged();		
+		soundAdapter.clear();
+		soundAdapter.addAll(soundboard.getSounds());
+		soundAdapter.notifyDataSetChanged();
 		
 	}
 	
 	
 	private class ListViewClickListener implements OnItemClickListener{
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {	
-			Toast.makeText(view.getContext(),"LV Checked: "+soundListView.getCheckedItemPosition()+" LV Selected: "+soundListView.getSelectedItemPosition(),Toast.LENGTH_LONG).show();
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			if(actionMode == null) {
-				SBC.playSound(Titles.get(position));
+				SBC.playSound(soundAdapter.getItem(position));
 			}
 			soundListView.setItemChecked(position,false);
 		} 
@@ -149,11 +148,11 @@ public class SoundboardFragment extends Fragment
 		{
 			switch(item.getItemId()){
 				case R.id.remove_sound_menu_item:
-					listener.onSoundRemoveCall(soundboard.getSoundByTitle(Titles.get(soundListView.getCheckedItemPosition())).getID()+"");
+					listener.onSoundRemoveCall(soundAdapter.getItem(soundListView.getCheckedItemPosition()));
 					mode.finish();
 					return true;
 				case R.id.set_rington_menu_item:
-					SBC.downloadRingtone(Titles.get(soundListView.getCheckedItemPosition()));
+					SBC.downloadRingtone(soundAdapter.getItem(soundListView.getCheckedItemPosition()).getTitle());
 					mode.finish();
 					return true;
 				default:

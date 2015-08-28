@@ -2,11 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jar="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-03d2a791fc6935636cde8425c513df13c348b3d3.jar" />
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\pre-dexed\debug\classes-69f5ea9066076ffda529ff9ae6c506b99ec2c743.jar" />
+    </item>
+    <item
+        jar="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\pre-dexed\debug\classes-1e782eccc0bdbe0a58ab31c80b4790a2ccb66b3b.jar" />
+    </item>
+    <item
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-ff2d7f5022b5a92fc988e7ecf40140c2621ade2e.jar" />
+    </item>
+    <item
+        jar="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\dave\AndroidStudioProjects\SoundBoard\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-c81f9a9da4fa595e56b8b508aee552b4b93f5a0d.jar" />
     </item>
 
 </items>

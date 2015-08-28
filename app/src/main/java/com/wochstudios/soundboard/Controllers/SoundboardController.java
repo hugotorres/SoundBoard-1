@@ -1,7 +1,6 @@
 package com.wochstudios.soundboard.Controllers;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.wochstudios.soundboard.Models.Sound;
 import com.wochstudios.soundboard.Models.Soundboard;
@@ -22,13 +21,8 @@ public class SoundboardController {
 		this.soundboard = sb;
 	}
 	
-	public void playSound(String key){
-		Toast.makeText(con,"Soundboard ID: "+soundboard.getID(),Toast.LENGTH_SHORT).show();
-		for(Sound temp : soundboard.getSounds()){
-			if(key.equals(temp.getTitle())){
-				player.playSound(con, temp.getUri());
-			}
-		}
+	public void playSound(Sound sound){
+        player.playSound(con,sound.getUri());
 	}
 	
 	public void setSoundboard(Soundboard sb){

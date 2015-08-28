@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import java.io.File;
 
@@ -11,8 +12,9 @@ import java.io.File;
 
 public class RingtoneMaker {
 	public void setRingtone(String name, Uri uri, Context con){
-		File k = new File(uri.toString());   
-		addURIToContentResolver(k,getContentValues(k,name),con);
+		File k = new File(uri.getPath());
+        Log.i(getClass().getSimpleName(),k.getAbsolutePath());
+		addURIToContentResolver(k, getContentValues(k, name), con);
 	}
 	
 	private ContentValues getContentValues(File k, String name){
